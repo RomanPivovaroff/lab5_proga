@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<serializedWorker>
+    <worker>
+        <id>1</id>
+        <name>John Doe</name>
+        <coordinates>
+            <x>100</x>
+            <y>50.5</y>
+        </coordinates>
+        <creationDate>2025-03-03T10:30:00.000+03:00</creationDate>
+        <salary>50000</salary>
+        <startDate>2025-03-03T10:30:00+03:00[Europe/Moscow]</startDate>
+        <position>HEAD_OF_DEPARTMENT</position>
+        <status>HIRED</status>
+        <organization>
+            <annualTurnover>1000000.5</annualTurnover>
+            <type>COMMERCIAL</type>
+            <postalAddress>
+                <street>Main Street</street>
+                <town>
+                    <x>10.5</x>
+                    <y>20.75</y>
+                    <z>1000</z>
+                    <name>Moscow</name>
+                </town>
+            </postalAddress>
+        </organization>
+    </worker>
+
+    <worker>
+        <id>2</id>
+        <name>Jane Smith</name>
+        <coordinates>
+            <x>150</x>
+            <y>75.3</y>
+        </coordinates>
+        <creationDate>2025-03-03T11:15:00.000+03:00</creationDate>
+        <salary>75000</salary>
+        <startDate>2025-03-03T11:15:00+03:00[Europe/Moscow]</startDate>
+        <position>DIRECTOR</position>
+        <status>REGULAR</status>
+        <organization>
+            <annualTurnover>2500000.0</annualTurnover>
+            <type>OPEN_JOINT_STOCK_COMPANY</type>
+            <postalAddress>
+                <street>Second Street</street>
+                <town>
+                    <x>15.2</x>
+                    <y>25.8</y>
+                    <z>2000</z>
+                    <name>Saint Petersburg</name>
+                </town>
+            </postalAddress>
+        </organization>
+    </worker>
+
+    <worker>
+        <id>3</id>
+        <name>Mike Johnson</name>
+        <coordinates>
+            <x>50</x>
+            <y>25.1</y>
+        </coordinates>
+        <creationDate>2025-03-03T12:00:00.000+03:00</creationDate>
+        <salary>45000</salary>
+        <startDate>2025-03-03T12:00:00+03:00[Europe/Moscow]</startDate>
+        <position>COOK</position>
+        <organization>
+            <annualTurnover>500000.0</annualTurnover>
+            <postalAddress>
+                <street>Third Avenue</street>
+                <town>
+                    <x>5.5</x>
+                    <y>10.2</y>
+                    <z>500</z>
+                    <name>Kazan</name>
+                </town>
+            </postalAddress>
+        </organization>
+    </worker>
+
+    <worker>
+        <id>4</id>
+        <name>Sarah Wilson</name>
+        <coordinates>
+            <x>200</x>
+            <y>100.0</y>
+        </coordinates>
+        <creationDate>2025-03-03T13:45:00.000+03:00</creationDate>
+        <salary>60000</salary>
+        <startDate>2025-03-03T13:45:00+03:00[Europe/Moscow]</startDate>
+        <position>HUMAN_RESOURCES</position>
+        <status>PROBATION</status>
+        <!-- organization может быть null -->
+    </worker>
+
+    <worker>
+        <id>5</id>
+        <name>Alex Brown</name>
+        <coordinates>
+            <x>75</x>
+            <y>35.7</y>
+        </coordinates>
+        <creationDate>2025-03-03T14:30:00.000+03:00</creationDate>
+        <salary>55000</salary>
+        <startDate>2025-03-03T14:30:00+03:00[Europe/Moscow]</startDate>
+        <position>LABORER</position>
+        <status>RECOMMENDED_FOR_PROMOTION</status>
+        <organization>
+            <annualTurnover>1500000.0</annualTurnover>
+            <type>PUBLIC</type>
+            <!-- postalAddress может быть null -->
+        </organization>
+    </worker>
+</serializedWorker>

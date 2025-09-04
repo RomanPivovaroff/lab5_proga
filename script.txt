@@ -1,0 +1,21 @@
+print_unique_status
+show
+history
+add
+Джон
+12
+13
+80000
+2023-03-11T15:30+03:00
+DIRECTOR
+
+80000000
+
+not null
+Песочная, 12
+12
+13
+14
+Санкт-Петергбург
+
+execute_script script2.txt
