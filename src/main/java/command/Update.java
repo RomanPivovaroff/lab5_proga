@@ -40,7 +40,6 @@ public class Update extends AbstractCommand {
                 return new ExecutionResponse(false, "Не существующий ID");
             }
 
-            console.println("* Создание нового Worker:");
             Worker w = Ask.AskWorker(console, old.getId());
             if (w != null && w.validate()) {
                 collectionManager.update(w);

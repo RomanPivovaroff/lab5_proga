@@ -14,6 +14,7 @@ public class Ask {
     public static class AskBreak extends Exception {}
 
     public static Worker AskWorker(Console console, int id) throws AskBreak {
+        console.println("* Создание нового Worker:");
         try {
             String name;
             while (true) {
@@ -77,7 +78,8 @@ public class Ask {
             Position position;
             while (true) {
                 console.print(
-                        "Position (DIRECTOR, LABORER, HUMAN_RESOURCES, HEAD_OF_DEPARTMENT, COOK): ");
+                        "Position (DIRECTOR, LABORER, HUMAN_RESOURCES, HEAD_OF_DEPARTMENT, COOK):"
+                                + " ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (!line.isEmpty()) {
@@ -92,7 +94,8 @@ public class Ask {
             Status status;
             while (true) {
                 console.print(
-                        "Status(FIRED, HIRED, RECOMMENDED_FOR_PROMOTION, REGULAR, PROBATION) or null: ");
+                        "Status(FIRED, HIRED, RECOMMENDED_FOR_PROMOTION, REGULAR, PROBATION) or"
+                                + " null: ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (line.isEmpty() || line.equals("null")) {
@@ -157,7 +160,8 @@ public class Ask {
             Float annualTurnover;
             while (true) {
                 console.print(
-                        "annualTurnover(Float annualTurnover>0) or null for Organization null declaration:");
+                        "annualTurnover(Float annualTurnover>0) or null for Organization null"
+                                + " declaration:");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (!line.isEmpty()) {
@@ -173,7 +177,8 @@ public class Ask {
             OrganizationType type;
             while (true) {
                 console.print(
-                        "OrganizationType (COMMERCIAL, PUBLIC, OPEN_JOINT_STOCK_COMPANY) or null: ");
+                        "OrganizationType (COMMERCIAL, PUBLIC, OPEN_JOINT_STOCK_COMPANY) or null:"
+                                + " ");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (!line.isEmpty()) {
@@ -197,13 +202,8 @@ public class Ask {
 
     public static Address AskAddress(Console console) throws AskBreak {
         console.print("Adress:");
-        while (true) {
-            console.print("null or not null?");
-            var line = console.readln().trim();
-            if (line.equals("exit")) throw new AskBreak();
-            if (line.equals("null") || line.isEmpty()) return null;
-            if (line.equals("not null")) break;
-        }
+        var town = AskLocation(console);
+        if (town == null) return null;
         try {
             String street;
             while (true) {
@@ -220,7 +220,6 @@ public class Ask {
                 } catch (NumberFormatException e) {
                 }
             }
-            var town = AskLocation(console);
             return new Address(street, town);
         } catch (NoSuchElementException | IllegalStateException e) {
             console.printError("Ошибка чтения");
@@ -233,7 +232,7 @@ public class Ask {
         try {
             float x;
             while (true) {
-                console.print("x(float x):");
+                console.print("x(float x) or null for Address null:");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
                 if (!line.isEmpty()) {
@@ -261,6 +260,7 @@ public class Ask {
             while (true) {
                 console.print("z(long z):");
                 var line = console.readln().trim();
+                console.println(line);
                 if (line.equals("exit")) throw new AskBreak();
                 if (!line.isEmpty()) {
                     try {

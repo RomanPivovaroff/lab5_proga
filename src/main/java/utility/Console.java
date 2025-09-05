@@ -8,6 +8,8 @@ public interface Console {
 
     void println(Object obj);
 
+    void scriptPrintMode(boolean mode);
+
     String readln();
 
     boolean isCanReadln();

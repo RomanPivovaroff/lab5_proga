@@ -11,10 +11,10 @@ import java.util.TreeSet;
 /** Класс-оболочка для сериализации коллекции. */
 @XmlRootElement(name = "serializedWorker")
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-public class SerializedWorker implements Serializable {
+public class SerializedWorkers implements Serializable {
     private ArrayList<Worker> workers;
 
-    public SerializedWorker() {
+    public SerializedWorkers() {
         this.workers = new ArrayList<>();
     }
 
@@ -23,7 +23,7 @@ public class SerializedWorker implements Serializable {
      *
      * @param workers TreeSet содержащий объекты класса Worker
      */
-    public SerializedWorker(ArrayList<Worker> workers) {
+    public SerializedWorkers(ArrayList<Worker> workers) {
         this.workers = workers;
     }
 

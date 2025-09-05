@@ -1,6 +1,6 @@
 package utility;
 
-import entity.SerializedWorker;
+import entity.SerializedWorkers;
 import entity.Worker;
 import exceptions.NotEnoughRightsToReadException;
 import jakarta.xml.bind.JAXBContext;
@@ -34,11 +34,12 @@ public class XMLReader {
                 }
             }
 
-            JAXBContext context = JAXBContext.newInstance(SerializedWorker.class);
+            JAXBContext context = JAXBContext.newInstance(SerializedWorkers.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            SerializedWorker serializedWorker =
-                    (SerializedWorker) unmarshaller.unmarshal(new StringReader(xmlData.toString()));
+            SerializedWorkers serializedWorker =
+                    (SerializedWorkers)
+                            unmarshaller.unmarshal(new StringReader(xmlData.toString()));
             TreeSet<Worker> workers = serializedWorker.toTreeSet();
             for (Worker t : workers) {
                 if (!t.validate())

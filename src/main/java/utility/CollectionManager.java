@@ -1,6 +1,6 @@
 package utility;
 
-import entity.SerializedWorker;
+import entity.SerializedWorkers;
 import entity.Worker;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -108,9 +108,10 @@ public class CollectionManager {
     }
 
     /** Сохраняет коллекцию в файл */
-    public void saveCollection() throws IOException {
-        xmlWriter.write(new SerializedWorker(new ArrayList<>(collection)));
+    public boolean saveCollection() throws IOException {
+        boolean saveSuccess = xmlWriter.write(new SerializedWorkers(new ArrayList<>(collection)));
         lastSaveTime = LocalDateTime.now();
+        return saveSuccess;
     }
 
     /** очищает коллекцию */

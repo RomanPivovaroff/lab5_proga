@@ -26,8 +26,9 @@ public class XMLWriter {
      *
      * @param o Объект для сериализации.
      */
-    public void write(Serializable o) throws IOException {
+    public boolean write(Serializable o) throws IOException {
         BufferedOutputStream outputStream = null;
+        boolean saveSuccess = false;
         try {
             JAXBContext context = JAXBContext.newInstance(o.getClass());
             Marshaller marshaller = context.createMarshaller();
@@ -35,10 +36,10 @@ public class XMLWriter {
             outputStream = new BufferedOutputStream(new FileOutputStream(file));
             marshaller.marshal(o, outputStream);
             console.println("Файл успешно сохранен: " + file.getAbsolutePath());
+            saveSuccess = true;
         } catch (JAXBException e) {
             console.printError("Выбранный объект не сериализуем.");
         } finally {
-            // ★ ВАЖНО: закрываем поток в finally блоке ★
             if (outputStream != null) {
                 try {
                     outputStream.close();
@@ -47,5 +48,6 @@ public class XMLWriter {
                 }
             }
         }
+        return saveSuccess;
     }
 }

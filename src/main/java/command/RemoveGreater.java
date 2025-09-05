@@ -30,7 +30,6 @@ public class RemoveGreater extends AbstractCommand {
                 return new ExecutionResponse(
                         false,
                         "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
-            console.println("* Создание нового Worker:");
             Worker a = Ask.AskWorker(console, collectionManager.getFreeId());
             if (a != null && a.validate()) {
                 collectionManager.add(a);

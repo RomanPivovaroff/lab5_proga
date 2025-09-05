@@ -16,7 +16,8 @@ public class AddIfMax extends AbstractCommand {
     public AddIfMax(Console console, CollectionManager collectionManager) {
         super(
                 "add_if_max {element}",
-                "добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции");
+                "добавить новый элемент в коллекцию, если его значение превышает значение"
+                        + " наибольшего элемента этой коллекции");
         this.console = console;
         this.collectionManager = collectionManager;
     }
@@ -29,7 +30,6 @@ public class AddIfMax extends AbstractCommand {
                         false,
                         "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
             Worker mymax = collectionManager.getCollection().last();
-            console.println("* Создание нового Worker:");
             Worker a = Ask.AskWorker(console, collectionManager.getFreeId());
             if (a != null && a.validate()) {
                 if (a.compareTo(mymax) > 0) {

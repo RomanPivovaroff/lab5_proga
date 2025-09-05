@@ -63,8 +63,8 @@ public class Organization {
     private Address postalAddress; //Поле может быть null
 }
 public class Address {
-    private String street; //Длина строки не должна быть больше 174, Поле может быть null
     private Location town; //Поле не может быть null
+    private String street; //Длина строки не должна быть больше 174, Поле может быть null
 }
 public class Location {
     private float x;

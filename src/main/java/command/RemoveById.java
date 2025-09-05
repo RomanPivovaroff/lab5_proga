@@ -4,12 +4,12 @@ import utility.CollectionManager;
 import utility.Console;
 
 /** Команда 'remove'. Удаляет элемент из коллекции по ид. */
-public class Remove extends AbstractCommand {
+public class RemoveById extends AbstractCommand {
     private final Console console;
     private final CollectionManager collectionManager;
 
-    public Remove(Console console, CollectionManager collectionManager) {
-        super("remove <ID>", "удалить элемент из коллекции по ID");
+    public RemoveById(Console console, CollectionManager collectionManager) {
+        super("remove_by_id <ID>", "удалить элемент из коллекции по ID");
         this.console = console;
         this.collectionManager = collectionManager;
     }

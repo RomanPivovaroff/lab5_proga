@@ -1,18 +1,21 @@
 package command;
 
 import entity.Organization;
+import entity.Worker;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import utility.Ask;
 import utility.CollectionManager;
 import utility.Console;
-import utility.StandartConsole;
+import utility.StandardAppConsole;
 
 public class FilterByOrganization extends AbstractCommand {
     private final Console console;
     private final CollectionManager collectionManager;
 
-    public FilterByOrganization(StandartConsole console, CollectionManager collectionManager) {
+    public FilterByOrganization(StandardAppConsole console, CollectionManager collectionManager) {
         super(
-                "filter_by_organization organization",
+                "filter_by_organization {organization}",
                 "вывести элементы, значение поля organization которых равно заданному");
         this.console = console;
         this.collectionManager = collectionManager;
@@ -28,17 +31,20 @@ public class FilterByOrganization extends AbstractCommand {
 
             Organization ch = Ask.askOrganization(console);
             boolean flag = true;
+            TreeSet<Worker> res = new TreeSet<>();
             for (var w : collectionManager.getCollection()) {
                 if ((ch == null && w.getOrganization() == null)
                         || (ch != null && ch.equals(w.getOrganization()))) {
-                    console.println(w);
+                    res.add(w);
                     flag = false;
                 }
             }
             if (flag) {
-                return new ExecutionResponse(false, "Не найден Organization");
+                return new ExecutionResponse(true, "Не найден соответсвующий Organization");
             }
-            return new ExecutionResponse(true, "все элементы с заданной организацией выведены!");
+            String result = res.stream().map(Worker::toString).collect(Collectors.joining("\n"));
+            return new ExecutionResponse(
+                    true, (result + "\n" + "все элементы с заданной организацией выведены!"));
         } catch (Ask.AskBreak e) {
             return new ExecutionResponse(false, "Отмена...");
         }

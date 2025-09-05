@@ -41,6 +41,6 @@ public class PrintUniqueStatus extends AbstractCommand {
         var s = "";
         if (beNull) s = "null";
         for (var e : ts) s += " " + e;
-        return new ExecutionResponse(s);
+        return new ExecutionResponse(true, s);
     }
 }

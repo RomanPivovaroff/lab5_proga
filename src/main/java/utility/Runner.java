@@ -33,7 +33,6 @@ public class Runner {
                 userCommand = (console.readln().trim() + " ").split(" ", 2);
                 userCommand[1] = userCommand[1].trim();
 
-                commandManager.addToHistory(userCommand[0]);
                 commandStatus = launchCommand(userCommand);
 
                 if (commandStatus.getMassage().equals("exit")) break;
@@ -62,7 +61,8 @@ public class Runner {
                 if (lengthRecursion < 0) {
                     console.selectConsoleScanner();
                     console.println(
-                            "Была замечена рекурсия! Введите максимальную глубину рекурсии (0..500)");
+                            "Была замечена рекурсия! Введите максимальную глубину рекурсии"
+                                    + " (0..500)");
                     while (lengthRecursion < 0 || lengthRecursion > 500) {
                         try {
                             console.print("> ");
@@ -94,6 +94,7 @@ public class Runner {
             return new ExecutionResponse(false, "Прав для чтения нет!");
 
         scriptStack.add(argument);
+        console.scriptPrintMode(true);
         try (Scanner scriptScanner = new Scanner(new File(argument))) {
 
             ExecutionResponse commandStatus;
@@ -116,7 +117,13 @@ public class Runner {
                 commandStatus =
                         needLaunch
                                 ? launchCommand(userCommand)
-                                : new ExecutionResponse("Превышена максимальная глубина рекурсии");
+                                : new ExecutionResponse(
+                                        false, "Превышена максимальная глубина рекурсии");
+                console.scriptPrintMode(false);
+                if (commandStatus.getMassage().equals("exit")) {
+                    console.println(commandStatus.getMassage());
+                    break;
+                }
                 if (userCommand[0].equals("execute_script"))
                     console.selectFileScanner(scriptScanner);
                 executionOutput.append(commandStatus.getMassage() + "\n");
@@ -124,6 +131,7 @@ public class Runner {
                     && !commandStatus.getMassage().equals("exit")
                     && console.isCanReadln());
 
+            console.scriptPrintMode(false);
             console.selectConsoleScanner();
             if (!commandStatus.getIsSucceeded()
                     && !(userCommand[0].equals("execute_script") && !userCommand[1].isEmpty())) {
@@ -142,6 +150,7 @@ public class Runner {
         } finally {
             scriptStack.remove(scriptStack.size() - 1);
         }
+        console.scriptPrintMode(false);
         return new ExecutionResponse("");
     }
 
@@ -152,7 +161,7 @@ public class Runner {
      * @return Код завершения + сообщение.
      */
     private ExecutionResponse launchCommand(String[] userCommand) {
-        if (userCommand[0].equals("")) return new ExecutionResponse("");
+        if (userCommand[0].isEmpty()) return new ExecutionResponse(false, "");
         var command = commandManager.getCommands().get(userCommand[0]);
 
         if (command == null)
@@ -160,6 +169,7 @@ public class Runner {
                     false,
                     "Команда '" + userCommand[0] + "' не найдена. Наберите 'help' для справки");
 
+        commandManager.addToHistory(userCommand[0]);
         switch (userCommand[0]) {
             case "execute_script" -> {
                 ExecutionResponse tmp =

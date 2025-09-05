@@ -27,11 +27,13 @@ public class Save extends AbstractCommand {
                     false,
                     "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
 
+        boolean saveSuccess = false;
         try {
-            collectionManager.saveCollection();
+            saveSuccess = collectionManager.saveCollection();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new ExecutionResponse(true, "");
+        return new ExecutionResponse(
+                true, (saveSuccess) ? "коллккция успешно загружена" : "коллекция не загружена");
     }
 }

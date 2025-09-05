@@ -25,15 +25,21 @@ spotless {
     java {
         target 'src/main/java/**/*.java'  // все Java файлы
 
-        // Google Java Format для автоисправлений
-        googleJavaFormat('1.22.0').aosp()
 
         // Дополнительные фиксы
         removeUnusedImports()
         trimTrailingWhitespace()
         endWithNewline()
-        indentWithSpaces(2)
+        googleJavaFormat('1.22.0').aosp().reflowLongStrings()
 
+        indentWithSpaces(2)
+        importOrder()
+
+        custom 'FixCheckstyleIssues', {
+            it.replaceAll(';;', ';') // Multiple consecutive semicolons
+                    .replaceAll('\\b(int|float|double|boolean)\\s+(\\w)', '$1 $2') // Type spacing
+                    .replaceAll('\\s+\\)', ')') // Space before closing parenthesis
+        }
     }
 }
 

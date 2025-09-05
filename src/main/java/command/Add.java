@@ -28,7 +28,6 @@ public class Add extends AbstractCommand {
                 return new ExecutionResponse(
                         false, "Неправильное количество аргументов!\nИспользование: '" + "'");
 
-            console.println("* Создание нового Worker:");
             Worker a = Ask.AskWorker(console, collectionManager.getFreeId());
 
             if (a != null && a.validate()) {

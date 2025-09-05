@@ -11,8 +11,8 @@ import java.util.Objects;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class Address implements Validatable, Serializable {
-    private String street; // Длина строки не должна быть больше 174, Поле может быть null
     private Location town; // Поле не может быть null
+    private String street; // Длина строки не должна быть больше 174, Поле может быть null
 
     /**
      * Конструктор
@@ -21,8 +21,8 @@ public class Address implements Validatable, Serializable {
      * @param town город.(Location, не может быть null)
      */
     public Address(String street, Location town) {
-        this.street = street;
         this.town = town;
+        this.street = street;
     }
 
     public Address() {}

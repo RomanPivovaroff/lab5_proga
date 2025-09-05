@@ -4,10 +4,11 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /** Для ввода команд и вывода результата */
-public class StandartConsole implements Console {
+public class StandardAppConsole implements Console {
     private static final String P = "$ ";
     private static Scanner fileScanner = null;
     private static final Scanner defScanner = new Scanner(System.in);
+    private static boolean scriptMode = false;
 
     /**
      * Выводит obj.toString() в консоль
@@ -15,7 +16,7 @@ public class StandartConsole implements Console {
      * @param obj Объект для печати
      */
     public void print(Object obj) {
-        System.out.print(obj);
+        if (!scriptMode) System.out.print(obj);
     }
 
     /**
@@ -24,7 +25,12 @@ public class StandartConsole implements Console {
      * @param obj Объект для печати
      */
     public void println(Object obj) {
-        System.out.println(obj);
+        if (!scriptMode) System.out.println(obj);
+    }
+
+    @Override
+    public void scriptPrintMode(boolean mode) {
+        scriptMode = mode;
     }
 
     /**
