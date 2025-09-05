@@ -44,19 +44,14 @@ public class Ask {
                         "date-time (Example: "
                                 + ZonedDateTime.now().format(DateTimeFormatter.ISO_ZONED_DATE_TIME)
                                 + " or 2023-03-11 or 2023-03-11T15:30+03:00): ");
-
                 var line = console.readln().trim();
-
                 if (line.equals("exit")) throw new AskBreak();
-                if (line.isEmpty()) throw new AskBreak();
-
                 try {
                     // полный формат с временной зоной
                     startDate = ZonedDateTime.parse(line, DateTimeFormatter.ISO_ZONED_DATE_TIME);
                     break;
                 } catch (DateTimeParseException e) {
                 }
-
                 try {
                     // формат без временной зоны
                     LocalDateTime ldt =
@@ -65,7 +60,6 @@ public class Ask {
                     break;
                 } catch (DateTimeParseException e) {
                 }
-
                 try {
                     // формат только с датой
                     LocalDate ld = LocalDate.parse(line);
@@ -74,7 +68,6 @@ public class Ask {
                 } catch (DateTimeParseException e) {
                 }
             }
-
             Position position;
             while (true) {
                 console.print(

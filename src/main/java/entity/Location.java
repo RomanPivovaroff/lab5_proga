@@ -106,7 +106,7 @@ public class Location implements Validatable, Serializable {
                 + "\", "
                 + "\"name\": \""
                 + name
-                + "\", "
-                + "}";
+                + "\" "
+                + "} ";
     }
 }

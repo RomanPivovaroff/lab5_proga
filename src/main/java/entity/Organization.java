@@ -112,7 +112,6 @@ public class Organization implements Validatable, Serializable {
                 + "\", "
                 + "\"postalAdress\": \""
                 + postalAddress
-                + "\", "
-                + "}";
+                + "} ";
     }
 }

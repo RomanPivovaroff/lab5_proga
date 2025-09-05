@@ -7,6 +7,7 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 /** Класс для чтения коллекции из файла */
@@ -40,7 +41,7 @@ public class XMLReader {
             SerializedWorkers serializedWorker =
                     (SerializedWorkers)
                             unmarshaller.unmarshal(new StringReader(xmlData.toString()));
-            TreeSet<Worker> workers = serializedWorker.toTreeSet();
+            ArrayList<Worker> workers = serializedWorker.getWorkers();
             for (Worker t : workers) {
                 if (!t.validate())
                     console.printError(

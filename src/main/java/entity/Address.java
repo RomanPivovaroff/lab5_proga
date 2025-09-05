@@ -78,6 +78,6 @@ public class Address implements Validatable, Serializable {
 
     @Override
     public String toString() {
-        return "Address{\"street\": " + street + ", " + "\"town\": \"" + town + "\", " + "}";
+        return "Address{\"street\": " + street + ", " + "\"town\": \"" + town + "} ";
     }
 }

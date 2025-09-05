@@ -165,7 +165,7 @@ public class Runner {
      */
     private ExecutionResponse launchCommand(String[] userCommand) {
         if (userCommand[0].isEmpty()) return new ExecutionResponse(false, "");
-        var command = commandManager.getCommands().get(userCommand[0]);
+        var command = commandManager.getCommands().get(userCommand[0].toLowerCase());
 
         if (command == null)
             return new ExecutionResponse(

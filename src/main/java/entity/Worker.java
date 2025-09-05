@@ -162,17 +162,16 @@ public class Worker implements Comparable<Worker>, Validatable, Serializable {
     public boolean validate() {
 
         return id != null
-                        && id > 0
-                        && this.name != null
-                        && !this.name.trim().isEmpty()
-                        && coordinates != null
-                        && coordinates.validate()
-                        && organization == null
-                || organization.validate()
-                        && creationDate != null
-                        && salary != null
-                        && salary > 0
-                        && startDate != null;
+                && id > 0
+                && this.name != null
+                && !this.name.trim().isEmpty()
+                && coordinates != null
+                && coordinates.validate()
+                && (organization == null || organization.validate())
+                && creationDate != null
+                && salary != null
+                && salary > 0
+                && startDate != null;
     }
 
     public String validateWithDetails() {
@@ -251,7 +250,6 @@ public class Worker implements Comparable<Worker>, Validatable, Serializable {
                 + "\", "
                 + "\"organization\": \""
                 + organization
-                + "\", "
                 + "}";
     }
 }

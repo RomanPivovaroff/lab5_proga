@@ -2,15 +2,55 @@
 <serializedWorker>
     <worker>
         <coordinates>
-            <x>1</x>
-            <y>2.0</y>
+            <x>100</x>
+            <y>150.5</y>
         </coordinates>
-        <creationDate>2025-09-05T23:29:51.031+03:00</creationDate>
-        <id>5</id>
-        <name>A</name>
-        <position>COOK</position>
-        <salary>3</salary>
-        <startDate>2022-12-12T00:00:00+03:00[Europe/Moscow]</startDate>
+        <creationDate>2025-09-05T22:11:00.662+03:00</creationDate>
+        <id>1</id>
+        <name>Иван Петров</name>
+        <organization>
+            <annualTurnover>7.5E7</annualTurnover>
+            <postalAdress>
+                <street>Невский проспект</street>
+                <town>
+                    <name>Санкт-Петербург</name>
+                    <x>120.5</x>
+                    <y>240.75</y>
+                    <z>360</z>
+                </town>
+            </postalAdress>
+            <type>PUBLIC</type>
+        </organization>
+        <position>HEAD_OF_DEPARTMENT</position>
+        <salary>50000</salary>
+        <startDate>2024-01-15T09:00:00+01:00</startDate>
+        <status>HIRED</status>
+    </worker>
+    <worker>
+        <coordinates>
+            <x>266</x>
+            <y>200.0</y>
+        </coordinates>
+        <creationDate>2025-09-05T22:11:00.708+03:00</creationDate>
+        <id>2</id>
+        <name>Анна Сидорова</name>
+        <organization>
+            <annualTurnover>1.5E8</annualTurnover>
+            <postalAdress>
+                <street>Литейный проспект</street>
+                <town>
+                    <name>Москва</name>
+                    <x>-50.0</x>
+                    <y>100.5</y>
+                    <z>-200</z>
+                </town>
+            </postalAdress>
+            <type>OPEN_JOINT_STOCK_COMPANY</type>
+        </organization>
+        <position>DIRECTOR</position>
+        <salary>120000</salary>
+        <startDate>2024-02-20T10:30:00+03:00</startDate>
+        <status>RECOMMENDED_FOR_PROMOTION</status>
     </worker>
     <worker>
         <coordinates>
@@ -39,54 +79,14 @@
     </worker>
     <worker>
         <coordinates>
-            <x>100</x>
-            <y>150.5</y>
+            <x>1</x>
+            <y>2.0</y>
         </coordinates>
-        <creationDate>2025-09-05T22:11:00.662+03:00</creationDate>
-        <id>2</id>
-        <name>Иван Петров</name>
-        <organization>
-            <annualTurnover>7.5E7</annualTurnover>
-            <postalAdress>
-                <street>Невский проспект</street>
-                <town>
-                    <name>Санкт-Петербург</name>
-                    <x>120.5</x>
-                    <y>240.75</y>
-                    <z>360</z>
-                </town>
-            </postalAdress>
-            <type>PUBLIC</type>
-        </organization>
-        <position>HEAD_OF_DEPARTMENT</position>
-        <salary>50000</salary>
-        <startDate>2024-01-15T09:00:00+01:00</startDate>
-        <status>HIRED</status>
-    </worker>
-    <worker>
-        <coordinates>
-            <x>266</x>
-            <y>200.0</y>
-        </coordinates>
-        <creationDate>2025-09-05T22:11:00.708+03:00</creationDate>
-        <id>3</id>
-        <name>Анна Сидорова</name>
-        <organization>
-            <annualTurnover>1.5E8</annualTurnover>
-            <postalAdress>
-                <street>Литейный проспект</street>
-                <town>
-                    <name>Москва</name>
-                    <x>-50.0</x>
-                    <y>100.5</y>
-                    <z>-200</z>
-                </town>
-            </postalAdress>
-            <type>OPEN_JOINT_STOCK_COMPANY</type>
-        </organization>
-        <position>DIRECTOR</position>
-        <salary>120000</salary>
-        <startDate>2024-02-20T10:30:00+03:00</startDate>
-        <status>RECOMMENDED_FOR_PROMOTION</status>
+        <creationDate>2025-09-05T23:29:51.031+03:00</creationDate>
+        <id>5</id>
+        <name>A</name>
+        <position>COOK</position>
+        <salary>3</salary>
+        <startDate>2022-12-12T00:00:00+03:00[Europe/Moscow]</startDate>
     </worker>
 </serializedWorker>

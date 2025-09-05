@@ -7,7 +7,7 @@ public class Exit extends AbstractCommand {
     private final Console console;
 
     public Exit(Console console) {
-        super("exit", "завершить программу (без сохранения в файл)");
+        super("exit", "завершить программу");
         this.console = console;
     }
 
