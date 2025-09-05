@@ -43,9 +43,10 @@ public class XMLReader {
             TreeSet<Worker> workers = serializedWorker.toTreeSet();
             for (Worker t : workers) {
                 if (!t.validate())
-                    throw new InvalidObjectException("Ошибка в характиристике рабочего");
+                    console.printError(
+                            "Ошибка в характиристике рабочего " + t.getName() + " не добавлен");
+                else collection.add(t);
             }
-            collection.addAll(workers);
             console.println("Коллекция загружена успешно");
         } catch (FileNotFoundException e) {
             e.printStackTrace();

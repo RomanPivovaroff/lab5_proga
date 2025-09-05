@@ -94,7 +94,6 @@ public class Runner {
             return new ExecutionResponse(false, "Прав для чтения нет!");
 
         scriptStack.add(argument);
-        console.scriptPrintMode(true);
         try (Scanner scriptScanner = new Scanner(new File(argument))) {
 
             ExecutionResponse commandStatus;
@@ -113,25 +112,29 @@ public class Runner {
                 if (userCommand[0].equals("execute_script")) {
                     needLaunch = checkRecursion(userCommand[1], scriptScanner);
                 }
-
+                switch (userCommand[0]) {
+                    case "add",
+                                    "add_if_max",
+                                    "remove_greater",
+                                    "filter_by_organization",
+                                    "update" ->
+                            console.scriptPrintMode(true);
+                }
                 commandStatus =
                         needLaunch
                                 ? launchCommand(userCommand)
                                 : new ExecutionResponse(
-                                        false, "Превышена максимальная глубина рекурсии");
+                                        true, "Превышена максимальная глубина рекурсии");
                 console.scriptPrintMode(false);
-                if (commandStatus.getMassage().equals("exit")) {
-                    console.println(commandStatus.getMassage());
-                    break;
-                }
-                if (userCommand[0].equals("execute_script"))
+                if (needLaunch && userCommand[0].equals("execute_script"))
                     console.selectFileScanner(scriptScanner);
                 executionOutput.append(commandStatus.getMassage() + "\n");
-            } while (commandStatus.getIsSucceeded()
-                    && !commandStatus.getMassage().equals("exit")
-                    && console.isCanReadln());
+                if (commandStatus.getMassage().equals("exit")) {
+                    console.println(executionOutput.toString());
+                    System.exit(0);
+                }
+            } while (commandStatus.getIsSucceeded() && console.isCanReadln());
 
-            console.scriptPrintMode(false);
             console.selectConsoleScanner();
             if (!commandStatus.getIsSucceeded()
                     && !(userCommand[0].equals("execute_script") && !userCommand[1].isEmpty())) {
@@ -175,9 +178,9 @@ public class Runner {
                 ExecutionResponse tmp =
                         commandManager.getCommands().get("execute_script").execute(userCommand);
                 if (!tmp.getIsSucceeded()) return tmp;
+                console.println(tmp.getMassage());
                 ExecutionResponse tmp2 = scriptMode(userCommand[1]);
-                return new ExecutionResponse(
-                        tmp2.getIsSucceeded(), tmp.getMassage() + "\n" + tmp2.getMassage().trim());
+                return new ExecutionResponse(tmp2.getIsSucceeded(), tmp2.getMassage().trim());
             }
             default -> {
                 return command.execute(userCommand);

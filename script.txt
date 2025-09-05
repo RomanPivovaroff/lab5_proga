@@ -51,6 +51,7 @@ COMMERCIAL
 Новосибирск
 
 show
+exit
 filter_by_organization
 
 update 28

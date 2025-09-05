@@ -62,13 +62,13 @@ public class Worker implements Comparable<Worker>, Validatable, Serializable {
     public Worker() {}
 
     /**
-     * Метод для сравнения объектов Worker. Сравнение происходит по величине зарботной платы.
+     * Метод для сравнения объектов Worker. Сравнение происходит по ид.
      *
      * @param o Объект для сравнения
-     * @return salary объекта - salary о
+     * @return id объекта - id о
      */
     public int compareTo(Worker o) {
-        return Integer.compare(this.salary, o.salary);
+        return Integer.compare(this.id, o.id);
     }
 
     @XmlElement
