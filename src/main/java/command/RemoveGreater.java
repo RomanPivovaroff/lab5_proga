@@ -1,6 +1,7 @@
 package command;
 
 import entity.Worker;
+import java.util.ArrayList;
 import utility.Ask;
 import utility.CollectionManager;
 import utility.Console;
@@ -33,10 +34,13 @@ public class RemoveGreater extends AbstractCommand {
             Worker a = Ask.AskWorker(console, collectionManager.getFreeId());
             if (a != null && a.validate()) {
                 collectionManager.add(a);
+                ArrayList<Worker> list = collectionManager.getSortCollection();
+                int i = 1;
                 while (true) {
-                    Worker w = collectionManager.getCollection().last();
+                    Worker w = list.get(list.size() - i);
                     if (a.equals(w)) break;
                     collectionManager.remove(w.getId());
+                    i++;
                 }
                 return new ExecutionResponse(
                         true, "Worker успешно добавлен, все рабочие с большей зарплатой удалены");

@@ -4,10 +4,7 @@ import entity.SerializedWorkers;
 import entity.Worker;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 /** Клаас для Управления коллекцией. */
 public class CollectionManager {
@@ -45,6 +42,20 @@ public class CollectionManager {
      */
     public TreeSet<Worker> getCollection() {
         return collection;
+    }
+
+    /**
+     * @return коллекция.
+     */
+    public ArrayList<Worker> getSortCollection() {
+        ArrayList<Worker> newCollection = new ArrayList<>(collection);
+        newCollection.sort(
+                new Comparator<Worker>() {
+                    public int compare(Worker s1, Worker s2) {
+                        return s1.getSalary() - s2.getSalary();
+                    }
+                });
+        return newCollection;
     }
 
     /** Получить Worker по ID */

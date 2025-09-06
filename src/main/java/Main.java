@@ -40,8 +40,7 @@ public class Main {
                         register(
                                 "print_ascending",
                                 new PrintAscending(
-                                        console, collectionManager)); // т.к. аналогичен show из-зи
-                        // автосортировки Treeset
+                                        console, collectionManager)); 
                         register(
                                 "print_unique_status",
                                 new PrintUniqueStatus(console, collectionManager));

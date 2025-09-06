@@ -1,6 +1,7 @@
 package command;
 
 import entity.Worker;
+import java.util.ArrayList;
 import utility.Ask;
 import utility.CollectionManager;
 import utility.Console;
@@ -29,10 +30,11 @@ public class AddIfMax extends AbstractCommand {
                 return new ExecutionResponse(
                         false,
                         "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
-            Worker mymax = collectionManager.getCollection().last();
+            ArrayList<Worker> list = collectionManager.getSortCollection();
+            Worker mymax = list.get(list.size() - 1);
             Worker a = Ask.AskWorker(console, collectionManager.getFreeId());
             if (a != null && a.validate()) {
-                if (a.compareTo(mymax) > 0) {
+                if (a.getSalary() > mymax.getSalary()) {
                     collectionManager.add(a);
                     return new ExecutionResponse(true, "Worker успешно добавлен!");
                 } else

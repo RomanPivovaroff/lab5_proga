@@ -1,5 +1,6 @@
 package command;
 
+import entity.Worker;
 import utility.CollectionManager;
 import utility.Console;
 import utility.StandardAppConsole;
@@ -16,6 +17,11 @@ public class PrintAscending extends AbstractCommand {
 
     @Override
     public ExecutionResponse execute(String[] arguments) {
-        return (new Show(console, collectionManager)).execute(arguments);
+        StringBuilder sb = new StringBuilder();
+        for (Worker w : collectionManager.getSortCollection()) {
+            sb.append(w).append("\n");
+        }
+        String result = sb.toString();
+        return new ExecutionResponse(true, result);
     }
 }
