@@ -79,3 +79,14 @@ shadowJar {
         attributes 'Main-Class': 'Main'
     }
 }
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+task generateJavadoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+    classpath = configurations.compileClasspath
+    destinationDir = file("${buildDir}/docs/javadoc")
+}

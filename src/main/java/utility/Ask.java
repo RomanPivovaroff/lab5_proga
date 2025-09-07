@@ -228,6 +228,9 @@ public class Ask {
                 console.print("x(float x) or null for Address null:");
                 var line = console.readln().trim();
                 if (line.equals("exit")) throw new AskBreak();
+                if (line.equals("null") || line.isEmpty()) {
+                    return null;
+                }
                 if (!line.isEmpty()) {
                     try {
                         x = Float.parseFloat(line);
